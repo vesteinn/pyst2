@@ -179,11 +179,16 @@ class AGI:
         self.stderr.write('    RESULT_LINE: %s\n' % line)
         m = re_code.search(line)
         if m:
+            print(m)
             code, response = m.groups()
+            print(code)
+            print(response)
+      
             code = int(code)
 
         if code == 200:
             for key, value, data in re_kv.findall(response):
+                print key, value, data
                 result[key] = (value, data)
 
                 # If user hangs up... we get 'hangup' in the data
